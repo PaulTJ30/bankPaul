@@ -8,6 +8,7 @@ class ManagerCards {
     constructor(
         userId,
         accountId,
+        cardNumber,
         cardType,
         expirationDate,
         securityCode,
