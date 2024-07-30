@@ -52,7 +52,7 @@ class ManagerTransaction {
 
         }
     }
-    async getUserTransactions(id) {
+    async getAccountTransactions(id) {
         try {
             const transactions = await TransactionModel.find({ accountFromId: id })
             return transactions;
