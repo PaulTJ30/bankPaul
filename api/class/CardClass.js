@@ -17,6 +17,7 @@ class ManagerCards {
         this.userId = userId,
             this.accountId = accountId,
             this.cardType = cardType,
+            this.cardNumber = cardNumber,
             this.expirationDate = expirationDate,
             this.securityCode = securityCode,
             this.status = status;
@@ -28,6 +29,7 @@ class ManagerCards {
                 userId: this.userId,
                 accountId: this.accountId,
                 cardType: this.cardType,
+                cardNumber: this.cardNumber ,
                 expirationDate: this.expirationDate,
                 securityCode: this.securityCode,
                 status: this.status,

@@ -12,6 +12,7 @@ import Account from "../models/AccountModel.js";
 import UserModel from "../models/UserModel.js"
 import ManagerAccount from "./AccountClass.js";
 import ManagerCards from "./CardClass.js";
+import Tools from "./toolClass.js";
 
 class ManagerUser {
     constructor(email, phone, name, lastName, isInSeasion, isAdmin, password) {
@@ -26,7 +27,7 @@ class ManagerUser {
 
     async register() {
         try {
-            const user = await UserModel.create8({
+            const user = await UserModel.create({
                 email: this.email,
                 phone: this.phone,
                 name: this.name,
@@ -36,9 +37,9 @@ class ManagerUser {
                 password: this.password
             })
 
-            const MA = new ManagerAccount(user._id, 12345, "Ahorro", 10000);
+            const MA = new ManagerAccount(user._id, Tools.generateAccountNumber, "Ahorro", 10000);
             const currentAccount = await MA.createAccount
-            const MC = new ManagerCards(user._id, currentAccount._id, "16 digitos al azar", "debito", "De la fecha actual sumar 3 años", "Generar codigo de 3 sifras", "Active")
+            const MC = new ManagerCards(user._id, currentAccount._id, Tools.generateCardNumber, "debito", Tools.generateExpirationDate, Tools.generateSecurityCode, "Active")
             await MC.createCard();
             return user;
         } catch (error) {
